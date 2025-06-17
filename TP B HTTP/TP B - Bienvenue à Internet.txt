@@ -1,0 +1,116 @@
+# TP B - Bienvenue à Internet : 
+
+RFC 2616 => Document technique définissant HTTP/1.1 (juin 1999)
+RFC 2068 => Tentative de standardisation 
+
+Ces documents servait de fondation pour le développement WEB.
+
+## 1.5 Questions intermédiaires
+
+1. Le GET permet de récuperer une donnée
+Le / permet d'indiquer la racine
+Alors que le HTTP/1.1 permet de donner le protocole HTTP de communication.
+
+2. Mettre une ligne vide permet de valider la fin de la requête du protocole HTTP.
+
+3. Si on oublie cette ligne, le serveur va penser qu'il reste des données de la requête qui as était mal reçu.
+
+4. Le code signal 200 indique la bonne réception du protocole HTTP.
+LE code 404 indique => Data Not Found (DNF comme sur trackmania)
+301 => Indique l'adresse du site a était déplacé.
+
+5. "HTTP/1.1 200 OK"
+Indique la bonne réception du serveur.
+
+6.  	
+CDate: Tue, 17 Jun 2025 06:49:25 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Last-Modified: Thu, 02 Jun 2016 06:01:08 GMT
+Cache-Control: max-age=600
+Expires: Tue, 17 Jun 2025 06:59:24 GMT
+Vary: Accept-Encoding,User-Agent
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=wV0396%2Blr9Imlt%2FjhfWfIBPGGVuQSLImfYjl9MmbbhAgzU8VqFFTJGjW%2FNI37zYDfYhHB%2FB0EOGG7e7SHT1dKHD0z3WkhQKmyej3Z2k96fnvaWiNWWiUYjX2co8%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 95109b59baaad475-CDG
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=23451&min_rtt=23451&rtt_var=11725&sent=2&recv=4&lost=0&retrans=0&sent_bytes=0&recv_bytes=35&delivery_rate=0&cwnd=249&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+
+7. On connait la séparation via l'indication "CC"
+
+8. On va tomber sur adresse invalide, ce qui va indiquer le code d'erreur 404 Not found.
+
+9. Le Type de retour et du text/html, mais également charset=iso-8859-1
+
+##2.1.2 Questions
+
+1. Oui on reçoit bien une réponse : Connection : close Hello World!
+
+2. 
+reponse = """HTTP/1.1 200 OK 
+        Content-Type: text/plain 
+        Content-Length: 12 
+
+        Connection: close Hello World!"""
+
+3. LE Content-Length :12 permet d'écrire 12 caractères sur le site.
+
+4. Si on omet cette ligne, il n'y a pas de limite.
+
+5. Si on supprime la ligne vide entre les entêtes et le message, cela passe le message comme un entête, ce qui enlevé l'accès au message.
+
+6. Le message s'affiche dans le telnet, dans le curl, et dans un navigateur. Le navigateur sera surement plus strict que les autres.
+
+## 2.2.3 Questions
+
+1. La structure de donnée reçu côté serveur est 
+"Ligne de requête : GET /date HTTP/1.1
+Méthode : GET
+Chemin demandé : /date
+Version HTTP : HTTP/1.1"
+On y retrouve la méthode, le chemin pour qui a était demendé, ainsi que la version.
+
+2. Si une ligne qui est mal formée, cela rends illisible la reception des données cote serveur.
+
+3. La variable chemin contient un message qui est modifiable selon le corps.
+
+4. N'ayant aucune autre méthode, on suppose que toute les entetes sont des GET (en les fait comporter comme ça.
+
+5. Le message est pas lisible et pon est incapable de ce conecter.
+
+6. Via un try catch + exception on devrait pouvoir afficher un message d'erreur.
+
+7. Ils sont pareils. Juste aucune idées de comment les normaliser
+
+8. On peux facilement rajouter une partie dans le code. PAr contre les elif enchaines sont pas forcement recommandé.
+
+9. Il peux avoir acces possiblement à une table de mot de passe, ce qui serrais contrainiant pour la sécurité de l'entreprise.
+
+On peux essayer, de couper détecter des mots potentielle dangereux. Il s'agit actuellement d'une variable qui n'est pas bien sécurisé pour le moment.
+
+## 2.3.2 Questions 
+
+1. Ligne de requête : GET /date HTTP/1.1
+
+2. L'utilité de la ligne en fin de requete permet de couper la requête (https://www.youtube.com/watch?v=Wad1Bf4L620)
+
+3. La date change bien a chaque appel.
+
+4. Le chemp d'entete de content type est obligatoire, comme la connection. 
+   Si on oublie le content-Length, c'est au client de le calculer.
+
+5. Si le content-Lenght n'affiche pas toute les données si il est trop petit.
+
+6. J'ai pas compris la question j'avoue, j'ai sinon affiché des accents.
+
+7. Pas compris également
+
+8. Il ne pourra pas répondre en meme temps, mais le serveur étant rapide, à notre échelle nous ne rendront pas compte.
+
+9. On pourrai facilement afficher un autre chemin dynamique, et le /uptime
+
+10. Il faudrait un système de rangement de chaque page, comme un système d'aborance.
+
