@@ -18,7 +18,6 @@ class MonHandler(StreamRequestHandler):
         if chemin == "/motd":
                 corps = "Bienvenue chez CanaDuck !"
         elif chemin == "/date":
-
                 corps = f"Nous sommes le {datetime.now().strftime('%A %d %B %Y, %H:%M:%S')}"
         else:
                 corps = """HTTP/1.1 200 OK 
@@ -30,7 +29,7 @@ Hello World!"""
         self.wfile.write(corps.encode())
         # Création du serveur, lié à l'adresse et au port (ici toutes interfaces, port 63000).
         # À chaque nouvelle connexion, une instance de MonHandler sera créée.
-        
+
 server = TCPServer(("", 8080), MonHandler)
 # Lancement du serveur : boucle infinie qui accepte les connexions
 server.serve_forever()
